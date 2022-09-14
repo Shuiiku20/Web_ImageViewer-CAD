@@ -7,6 +7,7 @@ class Circle {
     canvasPoint3 = {};
 
     mode = "draw";
+    fillMode = false;
 
     constructor(context) {
         this.ctx = context;
@@ -32,6 +33,10 @@ class Circle {
             this.sAngle,
             this.eAngle,
             true);
+        if (this.fillMode) {
+            this.ctx.fillStyle = 'rgb(0, 255, 255)';
+            this.ctx.fill();
+        }
         this.ctx.stroke();
         this.ctx.closePath();
     }

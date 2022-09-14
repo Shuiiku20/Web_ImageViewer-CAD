@@ -9,15 +9,15 @@
 
 <body>
 
-    <div style='position: absolute; top: 0px; left: 350px;'>
+    <div style='position: absolute; top: 0px; left: 330px;'>
         <h2>
-            Web Viewer
+            Web 画像閲覧
         </h2>
     </div>
 
-    <div style='position: absolute; top: 0px; left: 1100px;'>
+    <div style='position: absolute; top: 0px; left: 1060px;'>
         <h2>
-            Web CAD
+            Web ペイント
         </h2>
     </div>
 
@@ -53,10 +53,18 @@
 
     <div id='mode' style='position: absolute; top: 520px; left: 1050px;'>
         <input class="btn" id='normal' type='button' value='通常' />
-        <input class="btn" id='test' type='button' value='ノクリア' />
+        <input class="btn" id='fill' type='button' value='塗りつぶし' />
     </div>
 
+    <div style='position: absolute; top: 600px; left: 120px;'>
+        <canvas height="200" id='graphCanvas' class='Canvas' width="1300">
+            Your browser does not support the HTML 5 Canvas.
+        </canvas>
+    </div>
 
+    <div id='graphBar' style='position: absolute; top: 600px; left: 10px;'>
+        <input class="btn" id='graphStart' type='button' value='グラフ' />
+    </div>
     <script src="drawImage.js"></script>
     <script src="cursor.js"></script>
     <script src="imgControl.js"></script>

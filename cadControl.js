@@ -7,12 +7,27 @@ class cadControl {
     mode = "select";
     selectBox = null;
     testMode = false;
+    fillMode = false;
 
     constructor(canvas, context, shape) {
         this.canvas = canvas;
         this.ctx = context;
         this.shape = shape;
         this.drawCursor = new Cursor(canvas, context);
+    }
+
+    draw(){
+        if (this.testMode) {
+            this.canvas.style.cursor = "crosshair";
+            this.shape.forEach(shape => shape.draw());
+        } else {
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            if (this.mode === "select" && this.selectBox !== null) this.selectBox.draw();
+            this.shape.forEach((shape) => {
+                shape.fillMode = this.fillMode;
+                shape.draw();
+            });
+        }
     }
 
     #drawShape(e) {
@@ -22,7 +37,10 @@ class cadControl {
         } else {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
             if (this.mode === "select" && this.selectBox !== null) this.selectBox.draw();
-            this.shape.forEach(shape => shape.draw());
+            this.shape.forEach((shape) => {
+                shape.fillMode = this.fillMode;
+                shape.draw();
+            });
             this.drawCursor.draw(e);
         }
     }

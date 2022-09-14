@@ -4,6 +4,7 @@ class Rectangle {
     canvasPoint3 = {};
 
     mode = "draw";
+    fillMode = false;
 
     constructor(context) {
         this.ctx = context;
@@ -17,9 +18,12 @@ class Rectangle {
         h = Math.abs(this.canvasPoint1.y - this.canvasPoint3.y);
         this.ctx.lineWidth = 1.5;
         this.ctx.strokeStyle = 'yellow';
-        this.ctx.fillStyle = 'rgba(0,0,255,1)';
+        if (this.fillMode) {
+            this.ctx.fillStyle = 'yellow';
+            this.ctx.fillRect(x, y, w, h);
+        }
         this.ctx.strokeRect(x, y, w, h);
-        this.ctx.fillRect(x, y, w, h);
+
     }
 
     #drawSelectRect() {

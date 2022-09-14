@@ -16,6 +16,12 @@ body {
     border: thin solid #aaaaaa;
 }
 
+#graphCanvas {
+    background: #eaeaea;
+    cursor: crosshair;
+    border: thin solid #aaaaaa;
+}
+
 .btn {
     position: relative;
     overflow: hidden;

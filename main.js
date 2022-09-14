@@ -80,7 +80,7 @@ let testData = [
         [250, 120],
         [300, 180],
         [350, 190],
-        [400, 140],
+        [400, 40],
         [450, 90],
         [500, 70],
         [550, 80],
@@ -153,13 +153,13 @@ function  drawGraphCoordinate() {
     graphCtx.strokeStyle = 'black';
     graphCtx.beginPath();
     graphCtx.moveTo(10,190);
-    graphCtx.lineTo(10,10);
+    graphCtx.lineTo(10,25);
     graphCtx.moveTo(10,10);
     graphCtx.lineTo(5,25);
     graphCtx.lineTo(15,25);
     graphCtx.lineTo(10,10);
     graphCtx.moveTo(0,110);
-    graphCtx.lineTo(1290,110);
+    graphCtx.lineTo(1275,110);
     graphCtx.moveTo(1290,110);
     graphCtx.lineTo(1275,105);
     graphCtx.lineTo(1275,115);

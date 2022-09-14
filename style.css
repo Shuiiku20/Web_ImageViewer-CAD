@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    background: #f3f3f3;
+    overflow: hidden;
+}
+
+#imgCanvas {
+    background: #eeeeee;
+    /* cursor: crosshair; */
+    border: thin solid #aaaaaa;
+}
+
+#cadCanvas {
+    background: #000000;
+    cursor: none;
+    border: thin solid #aaaaaa;
+}
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    color: #000000;
+    background: #cbc9c9;
+    border-radius: 4px;
+    padding: 2px 12px;
+    line-height: normal;
+    text-decoration: none;
+    cursor: pointer;
+    width: 80px;
+    height: 25px;
+}
+
+.btn input {
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #d0d0d0;
+    border-color: #ececec;
+    color: #4f4f4f;
+
+}

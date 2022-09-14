@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ImageViewer & Web CAD</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div id='controls' style='position: absolute; top: 50px; left: 10px;'>
+        <a class="btn" href="javascript:">画像開く…
+            <input id='openImage' type="file" />
+        </a>
+    </div>
+
+    <div style='position: absolute; top: 50px; left: 120px;'>
+        <canvas height="450" id='imgCanvas' class='Canvas' width="600">
+            Your browser does not support the HTML 5 Canvas.
+        </canvas>
+    </div>
+
+    <div id='toolbar' style='position: absolute; top: 50px; left: 750px;'>
+        <input class="btn" id='line' type='button' value='直線' />
+        <br>
+        <input class="btn" id='rectangle' type='button' value='矩形' />
+        <br>
+        <input class="btn" id='circle' type='button' value='円' />
+        <hr>
+        <input class="btn" id='select' type='button' value='選択' />
+        <br>
+        <input class="btn" id='eraseAll' type='button' value='全部削除' />
+    </div>
+
+    <div style='position: absolute; top: 50px; left: 850px;'>
+        <canvas height="450" id='cadCanvas' class='Canvas' width="600">
+            Your browser does not support the HTML 5 Canvas.
+        </canvas>
+    </div>
+
+    <div id='mode' style='position: absolute; top: 520px; left: 1050px;'>
+        <input class="btn" id='normal' type='button' value='通常' />
+        <input class="btn" id='test' type='button' value='ノクリア' />
+    </div>
+
+
+    <script src="drawImage.js"></script>
+    <script src="cursor.js"></script>
+    <script src="imgControl.js"></script>
+    <script src="cadControl.js"></script>
+    <script src="line.js"></script>
+    <script src="rect.js"></script>
+    <script src="circle.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

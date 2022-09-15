@@ -69,7 +69,9 @@ fillMode.addEventListener("click", () => {
 
 const graphCanvas = document.getElementById("graphCanvas"),
     graphCtx = graphCanvas.getContext("2d"),
-    drawGraph = document.getElementById("graphStart");
+    graphDraw = document.getElementById("graphDraw"),
+    graphStart = document.getElementById("graphStart"),
+    graphDelete = document.getElementById("delete");
 
 let testData = [
     [0, 100],
@@ -102,13 +104,25 @@ let testData = [
     r = 5,
     sAngle = 0,
     eAngle = 2 * Math.PI,
+    i = 0,
+    timer;
+
+graphDraw.addEventListener("click", () => {
+    graphCtx.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+    clearInterval(timer);
     i = 0;
+    drawGraphCoordinate();
+    for (i; i < testData.length - 1; i++) {
+        drawGraphPoint();
+        drawGraphLine();
+    }
+});
 
-drawGraph.addEventListener("click", () => {
-
+graphStart.addEventListener("click", () => {
     graphCtx.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
     drawGraphCoordinate();
-    let timer = setInterval(() => {
+    i = 0;
+    timer = setInterval(() => {
         if (i > (testData.length - 2)) {
             clearInterval(timer);
             i = 0;
@@ -118,7 +132,12 @@ drawGraph.addEventListener("click", () => {
             i++;
         }
     }, 500)
+});
 
+graphDelete.addEventListener("click", () => {
+    graphCtx.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+    clearInterval(timer);
+    i = 0;
 });
 
 function drawGraphPoint() {

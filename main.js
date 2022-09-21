@@ -71,6 +71,7 @@ const graphCanvas = document.getElementById("graphCanvas"),
     graphCtx = graphCanvas.getContext("2d"),
     graphDraw = document.getElementById("graphDraw"),
     graphStart = document.getElementById("graphStart"),
+    saveZone = document.getElementById("saveZone"),
     graphDelete = document.getElementById("delete");
 
 let testData = [
@@ -88,10 +89,10 @@ let testData = [
     [550, 80],
     [600, 150],
     [650, 50],
-    [700, 30],
+    [700, 25],
     [750, 80],
     [800, 150],
-    [850, 180],
+    [850, 185],
     [900, 70],
     [950, 60],
     [1000, 130],
@@ -120,6 +121,7 @@ graphDraw.addEventListener("click", () => {
 
 graphStart.addEventListener("click", () => {
     graphCtx.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+    clearInterval(timer);
     drawGraphCoordinate();
     i = 0;
     timer = setInterval(() => {
@@ -128,6 +130,24 @@ graphStart.addEventListener("click", () => {
             i = 0;
         } else {
             drawGraphPoint();
+            drawGraphLine();
+            i++;
+        }
+    }, 300)
+});
+
+saveZone.addEventListener("click", () => {
+    graphCtx.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+    clearInterval(timer);
+    drawGraphCoordinate();
+    drawSafeZone();
+    i = 0;
+    timer = setInterval(() => {
+        if (i > (testData.length - 2)) {
+            clearInterval(timer);
+            i = 0;
+        } else {
+            drawSaveZonePoint();
             drawGraphLine();
             i++;
         }
@@ -143,6 +163,7 @@ graphDelete.addEventListener("click", () => {
 function drawGraphPoint() {
     graphCtx.lineWidth = 1.5;
     graphCtx.strokeStyle = 'blue';
+    graphCtx.fillStyle = 'blue';
     graphCtx.beginPath();
     graphCtx.arc(
         testData[i + 1][0],
@@ -151,7 +172,28 @@ function drawGraphPoint() {
         sAngle,
         eAngle,
         true);
-    graphCtx.fillStyle = 'blue';
+    graphCtx.fill();
+    graphCtx.stroke();
+    graphCtx.closePath();
+}
+
+function drawSaveZonePoint() {
+    graphCtx.lineWidth = 1.5;
+    if (testData[i + 1][1] < 30 || testData[i + 1][1] > 180) {
+        graphCtx.strokeStyle = 'red';
+        graphCtx.fillStyle = 'red';
+    } else {
+        graphCtx.strokeStyle = 'blue';
+        graphCtx.fillStyle = 'blue';
+    }
+    graphCtx.beginPath();
+    graphCtx.arc(
+        testData[i + 1][0],
+        testData[i + 1][1],
+        r,
+        sAngle,
+        eAngle,
+        true);
     graphCtx.fill();
     graphCtx.stroke();
     graphCtx.closePath();
@@ -186,4 +228,12 @@ function drawGraphCoordinate() {
     graphCtx.stroke();
     graphCtx.closePath();
     graphCtx.strokeRect(10, 105, 10, 10);
+}
+
+function drawSafeZone() {
+    graphCtx.lineWidth = 1.5;
+    // graphCtx.strokeStyle = 'green';
+    graphCtx.fillStyle = 'rgba(0,255,0,0.2)';
+    // graphCtx.strokeRect(0, 30, graphCanvas.width, 160);
+    graphCtx.fillRect(0, 30, graphCanvas.width, 150);
 }
